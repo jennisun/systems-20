@@ -49,7 +49,7 @@ int server_handshake(int *to_client) {
     printf("Error: %s\n", strerror(errno));
     return 0;
   }
-  if (!strcmp(client, ACK)) {
+  if (strcmp(client, ACK) != 0) {
     printf("Error occured\n");
     return 0;
   }
