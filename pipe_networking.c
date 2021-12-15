@@ -78,7 +78,7 @@ int client_handshake(int *to_server) {
   }
 
   printf("Client sending message to server..\n");
-  *to_server = open(buffer, O_WRONLY);
+  *to_server = open(WKP, O_WRONLY);
   if (*to_server < 0) {
     printf("Error: %s\n", strerror(errno));
     return 0;
@@ -100,7 +100,7 @@ int client_handshake(int *to_server) {
     printf("Error: %s\n", strerror(errno));
     return 0;
   }
-  if (!strcmp(buffer, ACK)) {
+  if (strcmp(buffer, ACK) != 0) {
     printf("Error occured\n");
     return 0;
   }
@@ -124,6 +124,6 @@ int client_handshake(int *to_server) {
 
 
 
-  int from_server = 0;
-  return from_server;
+  // int from_server = 0;
+  // return from_server;
 }
